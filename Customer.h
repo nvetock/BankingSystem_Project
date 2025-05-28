@@ -7,11 +7,16 @@ class Customer
 {
 public:
 	Customer(
-		std::string_view firstName
-		, std::string_view lastName
-		, std::string_view username
-		, std::string_view password
-	);
+		std::string_view firstName,
+		std::string_view lastName,
+		std::string_view username,
+		std::string_view password
+	)
+		: m_firstName{ firstName },
+		m_lastName{ lastName },
+		m_username{ username },
+		m_password{ password }
+	{}
 
 	bool accessAccount(std::string_view user, std::string_view pass);
 	void newAccount();
@@ -23,6 +28,8 @@ private:
 	std::string m_username{};
 	std::string m_password{};
 	short m_pin{};
+
+	std::string getUserInput();
 
 	Customer setupNewAccount();
 };
