@@ -46,6 +46,11 @@ std::string getUserInput() {
 
 
 // This function is ran by default constructor to initialize new account
+
+/// <summary>
+/// Setup a new account for a new customer.
+/// </summary>
+/// <returns>New Customer object</returns>
 Customer Customer::setupNewAccount() {
 	
 	std::cout << "\n\nWelcome! Let's setup your new account:\n";
@@ -77,15 +82,14 @@ Customer Customer::setupNewAccount() {
 			continue;
 		}
 
-
 		break;
 	}
 
 
-	std::cout << "\nThank you.\n Choose a username. Must be at least 8 characters in length, cannot include your last name.";
-
 	std::string username{""};
 	int username_minlength{ 8 };
+	std::cout << "\nThank you.\n Choose a username. Must be at least "<< username_minlength <<" characters in length, cannot include your last name.";
+
 	while (true) {
 
 		std::cout << "\Enter your desired username: ";
@@ -100,10 +104,11 @@ Customer Customer::setupNewAccount() {
 		break;
 	}
 	
-	std::cout << "\nChoose your password. Password must be at least " << passwd_minlength << " characters in length and include one number.\n";
-	
+
 	std::string passwd{ "" };
 	int passwd_minlength{ 12 };
+	std::cout << "\nChoose your password. Password must be at least " << passwd_minlength << " characters in length and include one number.\n";
+	
 	while (true) {
 
 		std::cout << "Enter your desired password: ";
@@ -151,11 +156,6 @@ bool clearFailedExtraction() {
 		ignoreLine();
 	}
 
-	if (!std::cin) {
-		if (std::cin.eof()) {
-			std::exit(0)
-		}
-	}
 }
 
 bool validateInputOnlyAlpha(std::string& s) {
